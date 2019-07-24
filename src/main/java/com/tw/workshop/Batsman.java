@@ -2,11 +2,11 @@ package com.tw.workshop;
 
 public class Batsman {
     private int id;
-    private final Run randomRun;
+    private final Run run;
 
-    public Batsman(int id, Run randomRun) {
+    public Batsman(int id, Run run) {
         this.id = id;
-        this.randomRun = randomRun;
+        this.run = run;
     }
 
     @Override
@@ -17,6 +17,6 @@ public class Batsman {
     }
 
     public int score() {
-        return randomRun.nextRun();
+        return run.nextRun();
     }
 }

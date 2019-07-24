@@ -10,15 +10,15 @@ public class GameTest {
 
     @Test
     public void shouldDeclareBatsmanAsWinner() {
-        Run randomRun = new FixedRun(Arrays.asList(5,2,3,1,0,3));
-        Batsman batsman = new Batsman(1, randomRun);
+        Run batsmanRuns = new FixedRun(Arrays.asList(5,2,3,1,0,3));
 
-        Game game = new Game(12, batsman, 6);
+        Batsman batsman = new Batsman(1, batsmanRuns);
+
+        Game game = new Game(12, 6, batsman);
 
         game.play();
 
         assertTrue(game.hasBatsmanWon());
     }
-
 
 }

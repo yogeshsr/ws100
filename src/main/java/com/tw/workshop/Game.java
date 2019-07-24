@@ -10,7 +10,7 @@ public class Game {
     private List<Integer> batsmanScores;
     private int numOfBalls;
 
-    public Game(int targetScore, Batsman batsman, int numOfBalls) {
+    public Game(int targetScore, int numOfBalls, Batsman batsman) {
         this.targetScore = targetScore;
         this.batsman = batsman;
         this.numOfBalls = numOfBalls;
@@ -31,7 +31,7 @@ public class Game {
 
     public static void main(String[] args) {
         Batsman batsman = new Batsman(1, new RandomRun());
-        Game game = new Game(12, batsman, 6);
+        Game game = new Game(12, 6, batsman);
 
         game.play();
 
