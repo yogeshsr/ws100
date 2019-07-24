@@ -20,11 +20,23 @@ public class Game {
         return batsmanScores.stream().reduce(0,Integer::sum) > targetScore;
     }
 
-    public void start() {
+    public void play() {
         batsmanScores = new ArrayList<>();
         for(int i=0; i<numOfBalls; i++) {
-            batsmanScores.add(batsman.score());
+            int score = batsman.score();
+            System.out.printf("Batsman scored: %d%n", score);
+            batsmanScores.add(score);
         }
+    }
+
+    public static void main(String[] args) {
+        Batsman batsman = new Batsman(1, new RandomRun());
+        Game game = new Game(12, batsman, 6);
+
+        game.play();
+
+        String status = game.hasBatsmanWon() ? "WON" : "LOST";
+        System.out.printf("Batsman has %s", status);
     }
 
 }
