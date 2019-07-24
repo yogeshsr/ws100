@@ -23,25 +23,33 @@ public class MultiPlayerGame {
             int score = batsman.score();
             int delivery = bowler.deliverBall();
             System.out.printf("Bowler : %d Batsman : %d\n", delivery, score);
-            if (delivery == score){
+            if (delivery == score) {
                 break;
             }
             batsmanScores.add(score);
         }
     }
 
-    public boolean hasBatsmanWon() {
-        return batsmanScores.stream().reduce(0,Integer::sum) > targetScore;
+    public static void main(String[] args) {
+        playForBatsman(new DefensiveRun());
+        playForBatsman(new AttackingRun());
+        playForBatsman(new MixedRun());
     }
 
-    public static void main(String[] args) {
-        Batsman batsman = new Batsman(1, new RandomRun());
-        Bowler bowler = new Bowler(1, new RandomRun());
-        MultiPlayerGame game = new MultiPlayerGame(12, 6, batsman, bowler);
+    private static void playForBatsman(Run runStrategy) {
+        System.out.printf("Run Strategy: %s%n", runStrategy.getClass().getSimpleName());
+        Batsman batsman = new Batsman(1, runStrategy);
+
+        Bowler bowler = new Bowler(1, new MixedRun());
+        MultiPlayerGame game = new MultiPlayerGame(8, 6, batsman, bowler);
 
         game.play();
 
         String status = game.hasBatsmanWon() ? "WON" : "LOST";
-        System.out.printf("Batsman has %s", status);
+        System.out.printf("Batsman has %s\n", status);
+    }
+
+    public boolean hasBatsmanWon() {
+        return batsmanScores.stream().reduce(0, Integer::sum) > targetScore;
     }
 }

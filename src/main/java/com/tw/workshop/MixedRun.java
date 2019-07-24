@@ -2,7 +2,7 @@ package com.tw.workshop;
 
 import java.util.Random;
 
-public class RandomRun implements Run {
+public class MixedRun implements Run {
 
     private Random random = new Random();
 

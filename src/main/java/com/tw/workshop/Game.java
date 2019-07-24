@@ -30,7 +30,7 @@ public class Game {
     }
 
     public static void main(String[] args) {
-        Batsman batsman = new Batsman(1, new RandomRun());
+        Batsman batsman = new Batsman(1, new MixedRun());
         Game game = new Game(12, 6, batsman);
 
         game.play();
